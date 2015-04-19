@@ -3,3 +3,5 @@ var express = require('express'),
 		Video 	= models.videos;
 
 var videoRouter = express.Router();
+
+module.exports = videoRouter;

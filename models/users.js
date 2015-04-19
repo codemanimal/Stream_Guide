@@ -2,7 +2,7 @@
 module.exports = function(sequelize, DataTypes) {
   var users = sequelize.define("users", {
     username: {
-      DataTypes.STRING,
+      type: DataTypes.STRING,
       allownull: false,
       unique: { msg: 'That username already exists' }
     },

@@ -23,7 +23,7 @@ module.exports = function(sequelize, DataTypes) {
     poster_url: DataTypes.TEXT,
     recurrence: DataTypes.STRING,
     status: DataTypes.STRING,
-    tags: DataTypes.ARRAY,
+    tags: DataTypes.ARRAY(DataTypes.JSON),
     thumbnail_url: DataTypes.TEXT,
     video_url: DataTypes.TEXT,
     views_last_hour: DataTypes.INTEGER,
