@@ -1,13 +1,30 @@
 "use strict";
-
 module.exports = {
   up: function(migration, DataTypes, done) {
-    // add altering commands here, calling 'done' when finished
-    done();
+    migration.createTable("users_videos", {
+      id: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: DataTypes.INTEGER
+      },
+      user_id: {
+        type: DataTypes.INTEGER
+      },
+      video_id: {
+        type: DataTypes.INTEGER
+      },
+      createdAt: {
+        allowNull: false,
+        type: DataTypes.DATE
+      },
+      updatedAt: {
+        allowNull: false,
+        type: DataTypes.DATE
+      }
+    }).done(done);
   },
-
   down: function(migration, DataTypes, done) {
-    // add reverting commands here, calling 'done' when finished
-    done();
+    migration.dropTable("users_videos").done(done);
   }
 };
