@@ -2,7 +2,7 @@
 module.exports = {
   up: function(migration, DataTypes, done) {
     migration.createTable("videos", {
-      id: {
+			id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
@@ -76,7 +76,7 @@ module.exports = {
       	type: DataTypes.STRING
       },
       tags: {
-      	type: DataTypes.ARRAY
+      	type: DataTypes.ARRAY(DataTypes.JSON)
       },
       thumbnail_url: {
       	type: DataTypes.TEXT
@@ -97,9 +97,6 @@ module.exports = {
       	type: DataTypes.INTEGER
       },
       views_last_total: {
-      	type: DataTypes.INTEGER
-      },
-      audience: {
       	type: DataTypes.INTEGER
       },
       user_id: {

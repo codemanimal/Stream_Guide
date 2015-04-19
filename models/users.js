@@ -7,7 +7,6 @@ module.exports = function(sequelize, DataTypes) {
       unique: { msg: 'That username already exists' }
     },
     password_digest: DataTypes.TEXT,
-    video_id: DataTypes.INTEGER,
     name: {
       type: DataTypes.STRING,
       validate: {
