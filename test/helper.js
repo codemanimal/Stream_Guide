@@ -1,14 +1,14 @@
-process.env.NODE_ENV = 'test';
+// process.env.NODE_ENV = 'test';
 
-var app = require('../server.js'),
-		seed = require('../seed.js'),
-		server;
+// var app = require('../server.js'),
+// 		// seed = require('../seed.js'),
+// 		server;
 
-seed();
+// // seed();
 
 // before(function(done) {
 // 	server = app.listen(3000);
-// 	seed(done);
+// 	// seed(done);
 // });
 
 // after(function(done) {
