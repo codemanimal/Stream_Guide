@@ -8,7 +8,7 @@ var express					 = require('express'),
 		userRouter 			 = require('./routers/user_router.js');
 
 var app = express();
-require('dotenv').load();
+// require('dotenv').load();
 
 // Server Configuration
 if (process.env.NODE_ENV !== "test") {

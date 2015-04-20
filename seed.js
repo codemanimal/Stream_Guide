@@ -2,6 +2,9 @@ var models           = require('./models'),
     User  					 = models.users,
     Video            = models.videos;
 
+User.destroy;
+Video.destroy;
+
 var videos = [
   {
     audience: 100,
@@ -131,14 +134,29 @@ var users = [
   }
 ];
 
-module.exports = function(done) {
-  Video.destroy({ truncate: true }).then(function() {
-    User.destroy({ truncate: true }).then(function() {
-      Video.bulkCreate(videos).then(function() {
-        User.bulkCreate(users).then(function() {
-          done();
-        });
-      });
-    })
-  })
+var seedVideo = function() {
+  videos.forEach(function(seed) {
+    Video.bulkCreate(videos)
+  });
 };
+
+var seedUser = function() {
+  users.forEach(function(seed) {
+    User.bulkCreate(users)
+  });
+};
+
+seedVideo();
+seedUser();
+
+// module.exports = function(done) {
+//   Video.destroy({ truncate: true }).then(function() {
+//     User.destroy({ truncate: true }).then(function() {
+//       Video.bulkCreate(videos).then(function() {
+//         User.bulkCreate(users).then(function() {
+//           done();
+//         });
+//       });
+//     });
+//   });
+// };

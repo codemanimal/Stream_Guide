@@ -32,8 +32,6 @@ module.exports = function(sequelize, DataTypes) {
     views_last_month: DataTypes.INTEGER,
     views_last_total: DataTypes.INTEGER
   }, {
-    underscored: true,
-
     classMethods: {
       associate: function(models) {
         videos.belongsToMany(models.users, {

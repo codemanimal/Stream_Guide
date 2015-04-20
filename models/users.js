@@ -45,8 +45,6 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: true
     }
   }, {
-    underscored: true,
-
     classMethods: {
       associate: function(models) {
         users.belongsToMany(models.videos, {
