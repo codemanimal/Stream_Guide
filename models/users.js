@@ -3,7 +3,7 @@ module.exports = function(sequelize, DataTypes) {
   var users = sequelize.define("users", {
     username: {
       type: DataTypes.STRING,
-      allownull: false,
+      allowNull: false,
       unique: { msg: 'That username already exists' }
     },
     password_digest: DataTypes.TEXT,

@@ -1,6 +1,6 @@
-var models           = require('./models'),
-    User  					 = models.users,
-    Video            = models.videos;
+var models  = require('./models'),
+    User  	= models.users,
+    Video   = models.videos;
 
 User.destroy;
 Video.destroy;
@@ -37,6 +37,7 @@ var videos = [
     views_last_week: 1000,
     views_last_month: 1500,
     views_last_total: 2000,
+    embed_html: "<iframe frameborder=\"0\" width=\"480\" height=\"270\" src=\"//www.dailymotion.com/embed/video/x2mrggm\" allowfullscreen></iframe>"
   },
   {
     audience: 50,
@@ -69,6 +70,7 @@ var videos = [
     views_last_week: 1000,
     views_last_month: 1500,
     views_last_total: 2000,
+    embed_html: "<iframe frameborder=\"0\" width=\"480\" height=\"270\" src=\"//www.dailymotion.com/embed/video/x2mvy5j\" allowfullscreen></iframe>"
   },
   {
     audience: 10,
@@ -101,6 +103,7 @@ var videos = [
     views_last_week: 1000,
     views_last_month: 1500,
     views_last_total: 2000,
+    embed_html: "<iframe frameborder=\"0\" width=\"480\" height=\"270\" src=\"//www.dailymotion.com/embed/video/x14gtas\" allowfullscreen></iframe>"
   }
 ];
 
@@ -112,7 +115,7 @@ var users = [
     email: 'tester1@email.com',
     birthdate: '1/2/1896',
     state: 'NY',
-    city: 'NYC',
+    city: 'NYC'
   },
   {
     username: 'tester2',
@@ -121,7 +124,7 @@ var users = [
     email: 'tester2@email.com',
     birthdate: '1/2/1986',
     state: 'NJ',
-    city: 'Montclair',
+    city: 'Montclair'
   },
   {
     username: 'tester3',
@@ -130,7 +133,7 @@ var users = [
     email: 'tester3@email.com',
     birthdate: '2/1/1996',
     state: 'CA',
-    city: 'LA',
+    city: 'LA'
   }
 ];
 

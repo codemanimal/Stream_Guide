@@ -3,8 +3,8 @@ App.Views.Videos = Backbone.View.extend({
 
 	initialize: function() {
 		console.log('Videos view created');
-		// When a new view is created - render
-		this.render();
+		// When new view is created and video data fetched from database - render
+		this.listenTo(this.collection, 'sync', this.render);
 	},
 
 	render: function() {
