@@ -34,6 +34,17 @@ App.Views.CreateUser = Backbone.View.extend({
 		}).done();
 
 		this.$el.empty();
+		this.$el.append($('#welcome-modal').html());
+
+		// var welcomeView = this;
+		
+		// var clearWindow = function(welcomeView) {
+		// 	setTimeout(function(welcomeView) {
+		// 	debugger;
+		// 		welcomeView.$el.empty().bind(this);
+		// 	}, 1000);
+		// };
+		// clearWindow(welcomeView);
 	}
 
 });

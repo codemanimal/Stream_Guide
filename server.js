@@ -14,6 +14,13 @@ var application_root = __dirname,
 var app = express();
 // require('dotenv').load();
 
+// DailyMotion suggested syntax for instantiating module
+// DM.init({
+//     apiKey: 'e542a26cabdfbdec523c',
+//     status: true, // check login status
+//     cookie: true // enable cookies to allow the server to access the session
+// });
+
 // Server Configuration
 if (process.env.NODE_ENV !== "test") {
 	app.use( logger('dev') );
@@ -22,16 +29,26 @@ if (process.env.NODE_ENV !== "test") {
 app.use( express.static( path.join( application_root, 'public' ) ) );
 app.use( bodyParser.urlencoded({ extended: false }) );
 app.use( bodyParser.json() );
-
-app.use(session({
-	secret: 'itfollows',
-	resave: false,
-	saveUninitialized: true
-}));
 // app.use('/videos', videoRouter);
 // app.use('/users', userRouter);
 
+app.use(session({
+  secret: 'itfollows',
+  resave: false,
+  saveUninitialized: true
+}));
+
 // Routes
+
+// GET Daily Motion videos
+// DM.api('/videos',
+//   { fields: 'audience,bookmarks_total,broadcasting,channel,country,description,duration_formatted,embed_html,end_time,explicit,id,language,metadata_credit_actors,metadata_credit_director,metadata_genre,metadata_original_title,onair,owner.url,poster_url,recurrence,start_time,status,tags,thumbnail_url,title,url,views_last_day,views_last_hour,views_last_month,views_last_week,views_total', 
+//     flags: 'live', sort: 'live-audience', limit: 100
+//   },
+//   function(error, response, body) {
+//     var results = body.data;
+//     res.send(results);
+// });
 
 // GET all videos from videos table
 app.get('/videos', function(req, res) {
@@ -70,6 +87,19 @@ app.post('/users', function(req, res) {
 });
 
 // Add Video to current session user
+// app.post('/users/:id/videos', authenticate, restrictAccess, function(req, res) {
+//   var userID = req.session.currentUser;
+//   User.
+//     .findOne(userID)
+//     .then(function(user) {
+//       user
+//         .addVideo({
+//           video_id: req.params.id
+//         }).then(function(video) {
+//           res.send(video);
+//         });
+//     });
+// });
 
 //Sessions
 

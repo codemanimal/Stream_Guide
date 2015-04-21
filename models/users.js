@@ -7,12 +7,7 @@ module.exports = function(sequelize, DataTypes) {
       unique: { msg: 'That username already exists' }
     },
     password_digest: DataTypes.TEXT,
-    name: {
-      type: DataTypes.STRING,
-      validate: {
-        isAlpha: { msg: 'Your name can only contain letters' }
-      }
-    },
+    name: DataTypes.STRING,
     email: {
       type: DataTypes.STRING,
       unique: { msg: 'An account already exists for that email address' },
@@ -34,10 +29,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     city: {
       type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        isAlpha: true
-      }
+      allowNull: false
     },
     active: {
       type: DataTypes.BOOLEAN,

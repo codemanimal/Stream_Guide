@@ -19,6 +19,8 @@ App.Views.Video = Backbone.View.extend({
 	saveVideo: function() {
 		// Get id of the video
 		var videoID = this.model.get('id');
+		debugger;
+		// var currentUser = 
 		// Send PUT request to add video to users session
 		$.ajax({
 			url: '',
