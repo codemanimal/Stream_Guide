@@ -4,12 +4,12 @@ App.Collections.Videos = Backbone.Collection.extend({
 
 	initialize: function() {
 		console.log('Video collection made');
-		// this.getVideos();
+		// When collection is synced, start livestream video
+		this.on('sync', this.playVideo, this);
 	},
 
-	// // Get videos from my database
-	// getVideos: function() {
-	// 	$.get('/videos');
-	// }
+	playVideo: function() {
+		$('#video-player').append(this.models[0].attributes.embed_html);
+	}
 
 });

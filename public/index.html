@@ -14,6 +14,8 @@
 	<script type="text/javascript" src='js/collections/videos.js'></script>
 	<script type="text/javascript" src='js/views/video.js'></script>
 	<script type="text/javascript" src='js/views/videos.js'></script>
+	<script type="text/javascript" src='js/views/login_modal.js'></script>
+	<script type="text/javascript" src='js/views/sign_up_modal.js'></script>
 
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
 
@@ -22,9 +24,9 @@
 
 	<h1>STREAMGUIDE</h1>
 
-	<div id='video-view'>
-		<h2>Add embedded video here</h2>
-	</div>
+	<div id='login-modal'></div>
+
+	<div id='video-player'></div>
 
 	<div id='video-view-categories'>
 		<span>Title</span>
@@ -39,9 +41,91 @@
 			<span>{{start_time}}</span>
 			<span>{{end_time}}</span>
 			<span>
-				<button>Save to list</button>
+				<button id='save-button'>Save to list</button>
 			</span>
 	</template>
+
+	<template id='login-modal-template'>
+		<div>
+			<h3>Welcome to StreamGuide!</h3>
+			<p>The best live content guide on the web</p>
+			<div>			
+				<span>Username:</span>
+				<span>
+					<input type='text' placeholder='Enter username'>
+				</span>
+			</div>
+			<div>
+				<span>Password:</span>
+				<span>
+					<input type='text' placeholder='Enter password'>
+				</span>
+			</div>
+			<div>
+				<br>
+				<button id='login-button'>Login</button>
+			</div>
+			<hr>
+			<h3>New to StreamGuide?</h3>
+			<div>
+				<button id='create-user-button'>Click here to Sign Up!</button>
+			</div>			
+		</div>
+	</template>
+
+	<template id='sign-up-modal'>
+		<div>
+			<p>Find the best live content on the web with StreamGuide!</p>
+			<div>
+				<span>Name:</span>
+				<span>
+					<input type='text' placeholder='First Last'>
+				</span>
+			</div>
+			<div>
+				<span>Email:</span>
+				<span>
+					<input type='text' placeholder='you@email.com'>
+				</span>
+			</div>
+			<div>
+				<span>Birthdate:</span>
+				<span>
+					<input type='text' placeholder='mm/dd/yy'>
+				</span>
+			</div>
+			<div>
+				<span>City:</span>
+				<span>
+					<input type='text' placeholder='New York'>
+				</span>
+			</div>
+			<div>
+				<span>State:</span>
+				<span>
+					<!--Change this to a dropdown menu using the 'select' and 'option' tags for all abbrev. states-->
+					<input type='text' placeholder='NY'>
+				</span>
+			</div>
+			<br>
+			<div>
+				<span>Username:</span>
+				<span>
+					<input type='text' id='signup-username' placeholder='Create a username'>
+				</span>
+			</div>
+			<div>
+				<span>Password:</span>
+				<span>
+					<input type='text' id='signup-password' placeholder='Create a password'>
+				</span>
+			</div>
+			<br>
+			<button id='sign-up-button'>Create my account!</button>
+		</div>
+
+	</template>
+
 	
 </body>
 </html>

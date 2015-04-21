@@ -26,18 +26,18 @@ var videos = [
     metadata_original_title: 'the tester show - part 1',
     onair: false,
     owner: "x456oo5",
-    poster_url: "http:\/\/ak.dailymotion.com\/thumbnail\/x26m1j4\/45x60-abc.jpg",
+    poster_url: null,
     recurrence: 'daily',
     status: 'ready',
     tags: [],
-    thumbnail_url: "http:\/\/ak.dailymotion.com\/thumbnail\/x26m1j4\/45x60-abc.jpg",
-    video_url: "http:\/\/ak.dailymotion.com\/thumbnail\/x26m1j4\/45x60-abc.jpg",
+    thumbnail_url: "http://s1.dmcdn.net/J_A3n.jpg",
+    video_url: 'http://www.dailymotion.com/video/x2mvy5j_a-ap-riot-rave-london_music',
     views_last_hour: 10,
     views_last_day: 100,
     views_last_week: 1000,
     views_last_month: 1500,
     views_last_total: 2000,
-    embed_html: "<iframe frameborder=\"0\" width=\"480\" height=\"270\" src=\"//www.dailymotion.com/embed/video/x2mrggm\" allowfullscreen></iframe>"
+    embed_html: "<iframe frameborder='0' width='480' height='270' src='//www.dailymotion.com/embed/video/x2mrggm' allowfullscreen></iframe>"
   },
   {
     audience: 50,
@@ -59,18 +59,17 @@ var videos = [
     metadata_original_title: 'the tester show - part 2',
     onair: false,
     owner: "x456oo5",
-    poster_url: "http:\/\/ak.dailymotion.com\/thumbnail\/x26m1j4\/45x60-abc.jpg",
+    poster_url: null,
     recurrence: 'daily',
     status: 'ready',
     tags: [],
-    thumbnail_url: "http:\/\/ak.dailymotion.com\/thumbnail\/x26m1j4\/45x60-abc.jpg",
-    video_url: "http:\/\/ak.dailymotion.com\/thumbnail\/x26m1j4\/45x60-abc.jpg",
-    views_last_hour: 10,
+    thumbnail_url: "http://s1.dmcdn.net/J_A3n.jpg",
+    video_url: 'http://www.dailymotion.com/video/x2mvy5j_a-ap-riot-rave-london_music',    views_last_hour: 10,
     views_last_day: 100,
     views_last_week: 1000,
     views_last_month: 1500,
     views_last_total: 2000,
-    embed_html: "<iframe frameborder=\"0\" width=\"480\" height=\"270\" src=\"//www.dailymotion.com/embed/video/x2mvy5j\" allowfullscreen></iframe>"
+    embed_html: "<iframe frameborder='0' width='480' height='270' src='//www.dailymotion.com/embed/video/x2mrggm' allowfullscreen></iframe>"
   },
   {
     audience: 10,
@@ -92,18 +91,17 @@ var videos = [
     metadata_original_title: 'the tester show - part 3',
     onair: false,
     owner: "x456oo5",
-    poster_url: "http:\/\/ak.dailymotion.com\/thumbnail\/x26m1j4\/45x60-abc.jpg",
+    poster_url: null,
     recurrence: 'daily',
     status: 'processing',
     tags: [],
-    thumbnail_url: "http:\/\/ak.dailymotion.com\/thumbnail\/x26m1j4\/45x60-abc.jpg",
-    video_url: "http:\/\/ak.dailymotion.com\/thumbnail\/x26m1j4\/45x60-abc.jpg",
-    views_last_hour: 10,
+    thumbnail_url: "http://s1.dmcdn.net/J_A3n.jpg",
+    video_url: 'http://www.dailymotion.com/video/x2mvy5j_a-ap-riot-rave-london_music',    views_last_hour: 10,
     views_last_day: 100,
     views_last_week: 1000,
     views_last_month: 1500,
     views_last_total: 2000,
-    embed_html: "<iframe frameborder=\"0\" width=\"480\" height=\"270\" src=\"//www.dailymotion.com/embed/video/x14gtas\" allowfullscreen></iframe>"
+    embed_html: "<iframe frameborder='0' width='480' height='270' src='//www.dailymotion.com/embed/video/x2mrggm' allowfullscreen></iframe>"
   }
 ];
 
