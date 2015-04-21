@@ -30,7 +30,11 @@ module.exports = function(sequelize, DataTypes) {
     views_last_day: DataTypes.INTEGER,
     views_last_week: DataTypes.INTEGER,
     views_last_month: DataTypes.INTEGER,
-    views_last_total: DataTypes.INTEGER
+    views_last_total: DataTypes.INTEGER,
+    embed_html: {
+        type: DataTypes.STRING,
+        allowNull: false
+    }
   }, {
     classMethods: {
       associate: function(models) {
