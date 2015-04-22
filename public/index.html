@@ -24,44 +24,54 @@
 
 </head>
 <body>
-	<div id='header'>
+
+	<div class ='panel' id='header'>
 		<span id='title'>STREAMGUIDE</span>
-		<span>My Videos</span>
-		<span>Account</span>
-		<span>Logout</span>
+		<span class='header-menu'>Logout</span>
+		<span class='header-menu'>Account</span>
+		<span class='header-menu'>My Videos</span>
 	</div>
 
 	<div id='login-modal'></div>
 
 	<div id='video-player'></div>
 
-	<div id='video-view-categories'>
-		<span>Title</span>
-		<span>Start Time</span>
-		<span>End Time</span>
+	<table id='video-list'>
+			<tr>
+				<th>Title</th>
+				<th>Start Time</th>
+				<th>End Time</th>
+			</tr>
+	</table>
+
+	<div class ='panel' id='footer'>
+		<span id='copyright' class='footer-menu'>©StreamGuide LLC</span>
+		<span id='about-footer' class='footer-menu'>About</span>
+		<span id='contact-footer' class='footer-menu'>Contact</span>
 	</div>
 
-	<div id='video-list'></div>
-
 	<template id='video-preview-template'>
-			<span>{{title}}</span>
-			<span>{{start_time}}</span>
-			<span>{{end_time}}</span>
-			<span>
-				<button id='save-button'>Save to list</button>
-			</span>
+			<tr>
+				<td>{{title}}</td>
+				<td>{{start_time}}</td>
+				<td>{{end_time}}</td>
+				<td>
+					<button id='save-button'>Save to list</button>
+				</td>
+			</tr>
 	</template>
 
 	<template id='login-modal-template'>
 		<div>
-			<h3>Welcome to StreamGuide!</h3>
-			<p>The best live content guide on the web</p>
+			<h3 id='subtitle'>Welcome to StreamGuide!</h3>
+			<p id='tagline-modal'>The best live content guide on the web</p>
 			<div>			
 				<span>Username:</span>
 				<span>
 					<input type='text' id='login-username' placeholder='Enter username'>
 				</span>
 			</div>
+			<br>
 			<div>
 				<span>Password:</span>
 				<span>
@@ -82,32 +92,32 @@
 
 	<template id='sign-up-modal'>
 		<div>
-			<p>Find the best live content on the web with StreamGuide!</p>
-			<div>
+			<h4>Create an account and find the best live content on the web!</h4>
+			<div class='signup-info'>
 				<span>Name:</span>
 				<span>
 					<input type='text' id='signup-name' placeholder='First Last'>
 				</span>
 			</div>
-			<div>
+			<div class='signup-info'>
 				<span>Email:</span>
 				<span>
 					<input type='text' id='signup-email' placeholder='you@email.com'>
 				</span>
 			</div>
-			<div>
+			<div class='signup-info'>
 				<span>Birthdate:</span>
 				<span>
 					<input type='text' id='signup-birthdate' placeholder='mm/dd/yy'>
 				</span>
 			</div>
-			<div>
+			<div class='signup-info'>
 				<span>City:</span>
 				<span>
 					<input type='text' id='signup-city' placeholder='New York'>
 				</span>
 			</div>
-			<div>
+			<div class='signup-info'>
 				<span>State:</span>
 				<span>
 					<!--Change this to a dropdown menu using the 'select' and 'option' tags for all abbrev. states-->
@@ -115,13 +125,13 @@
 				</span>
 			</div>
 			<br>
-			<div>
+			<div class='signup-info'>
 				<span>Username:</span>
 				<span>
 					<input type='text' id='signup-username' placeholder='Create a username'>
 				</span>
 			</div>
-			<div>
+			<div class='signup-info'>
 				<span>Password:</span>
 				<span>
 					<input type='text' id='signup-password' placeholder='Create a password'>

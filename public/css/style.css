@@ -1,14 +1,110 @@
-/*body { background: #393D48; }
+body { background: #5D6E7A; }
  
-#title {
-	color: #d7ceb2;
-	font: 4.5em 'Sansita One';
-	text-align: center;
-	font-style: italic;
-	text-shadow: 3px 3px 0px #393D48, 6px 6px 0px #5c5f72;
+#header {
+	background-color: #EFFFF0;
+  background-size: auto;
+  width: 100%;
+  height: 68px;
+  border-bottom: 10px solid #FFF7AE;
 }
-*/
-@font-face {
+
+#title {
+	color: #586669;
+	font: 4.2em 'Sansita One';
+	text-align: left;
+	font-style: italic;
+	text-shadow: 1px 1px 0px #393D48, 1px 1px 0px #586669;
+  line-height: 87px;
+  margin-left: 5px; 
+}
+
+.header-menu {
+	color: #586669;
+  text-shadow: 0px 0px 0px #393D48, 0px 0px 0px #586669;
+  font: 1.5em 'Sansita One';
+  float: right;
+  line-height: 112px;
+  margin-right: 29px;
+  padding-left: 16px;
+}
+
+#video-player {
+	z-index: -1;
+}
+
+iframe {
+  width: 1000px;
+  height: 335px;
+  text-align: center;
+  margin-top: -15px;
+  margin-left: 210px;
+	z-index: -1;
+}
+
+#video-view-categories {
+  width: 1200px;
+  height: 50px;
+  margin: 1px auto;
+  line-height: 65px;
+}
+
+#video-list {
+  width: 1200px;
+  height: 50px;
+  margin: 1px auto;
+  line-height: 65px;
+}
+
+.category {
+	/*display: table-row-group;*/
+  font: 1em 'Sansita One';
+  margin-right: 29px;
+}
+
+#footer {
+	background-color: #EFFFF0;
+  background-size: auto;
+  width: 100%;
+  height: 44px;
+  border-top: 10px solid #FFF7AE;
+}
+
+.footer-menu {
+	color: #586669;
+  text-shadow: 0px 0px 0px #393D48, 0px 0px 0px #586669;
+  font: 1.5em 'Sansita One';
+  float: left;
+  line-height: 47px;
+  margin-right: 29px;
+  padding-left: 16px;
+}
+
+#copyright {
+	float: right;
+}
+
+#login-modal {
+	display: none;
+	z-index: 10;
+	width: 700px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+#subtitle {
+	margin-bottom: 0px;
+	margin-left: 32px;
+}
+
+#tagline-modal {
+	margin-top: 5px;
+}
+
+.signup-info {
+	padding-bottom: 17px;
+}
+
+/*@font-face {
     font-family: 'BazarMedium';
     src: url('http://www.midwinter-dg.com/blog_demos/css-text-shadows/fonts/bazar-webfont.eot');
     src: url('http://www.midwinter-dg.com/blog_demos/css-text-shadows/fonts/bazar-webfont.eot?iefix') format('eot'),
@@ -21,13 +117,13 @@
 }
  
 body {
-	text-align: center;
+	/*text-align: center;*/
 	background: #383838 url(http://www.midwinter-dg.com/images/theme/body.gif) repeat;
-	width:1000px;
-	margin: 80px auto 40px;
+	/*width:1000px;*/
+	margin: 0px auto;
 }
  
-p {
+/*p {
 	width: 300px;
 	margin: 40px auto;
 	text-align: center;
@@ -48,7 +144,7 @@ a:hover, a:active {
 /* text-shadow styles */
  
  
-div {
+/*div {
 	width: 998px;	margin-right: auto;
 	margin-left: auto;
 	border: 1px solid #424242;
@@ -66,4 +162,4 @@ Z1 {
 .smaller {
 	font-size: .65em;
 	vertical-align: .2em;
-}
+}*/*/*/

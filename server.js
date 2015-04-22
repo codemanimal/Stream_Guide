@@ -16,11 +16,11 @@ var app = express();
 // require('dotenv').load();
 
 // DailyMotion suggested syntax for instantiating module
-DM.init({
-    apiKey: 'e542a26cabdfbdec523c',
-    status: true, // check login status
-    cookie: true // enable cookies to allow the server to access the session
-});
+// DM.init({
+//     apiKey: 'e542a26cabdfbdec523c',
+//     status: true, // check login status
+//     cookie: true // enable cookies to allow the server to access the session
+// });
 
 // Server Configuration
 if (process.env.NODE_ENV !== "test") {
@@ -42,14 +42,14 @@ app.use(session({
 // Routes
 
 // GET Daily Motion videos
-DM.api('/videos',
-  { fields: 'audience,bookmarks_total,broadcasting,channel,country,description,duration_formatted,embed_html,end_time,explicit,id,language,metadata_credit_actors,metadata_credit_director,metadata_genre,metadata_original_title,onair,owner.url,poster_url,recurrence,start_time,status,tags,thumbnail_url,title,url,views_last_day,views_last_hour,views_last_month,views_last_week,views_total', 
-    flags: 'live', sort: 'live-audience', limit: 100
-  },
-  function(error, response, body) {
-    var results = body.data;
-    res.send(results);
-});
+// DM.api('/videos',
+//   { fields: 'audience,bookmarks_total,broadcasting,channel,country,description,duration_formatted,embed_html,end_time,explicit,id,language,metadata_credit_actors,metadata_credit_director,metadata_genre,metadata_original_title,onair,owner.url,poster_url,recurrence,start_time,status,tags,thumbnail_url,title,url,views_last_day,views_last_hour,views_last_month,views_last_week,views_total', 
+//     flags: 'live', sort: 'live-audience', limit: 100
+//   },
+//   function(error, response, body) {
+//     var results = body.data;
+//     res.send(results);
+// });
 
 // GET all videos from videos table
 app.get('/videos', function(req, res) {

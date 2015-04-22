@@ -1,4 +1,6 @@
 App.Views.Video = Backbone.View.extend({
+	el: '#video-list',
+
 	initialize: function() {
 		console.log('Video view created');
 		// Compile the template for a single video view
@@ -8,8 +10,8 @@ App.Views.Video = Backbone.View.extend({
 	},
 
 	render: function() {
-		// Set the html of the undefined view element to the template with the data from the model
-		this.$el.html( this.template( this.model.toJSON() ) );
+		// Append the template to the '#video-list' table
+		this.$el.append( this.template( this.model.toJSON() ) );
 	},
 
 	events: {
@@ -19,7 +21,6 @@ App.Views.Video = Backbone.View.extend({
 	saveVideo: function() {
 		// Get id of the video
 		var videoID = this.model.get('id');
-		debugger;
 		// var currentUser = 
 		// Send PUT request to add video to users session
 		$.ajax({
