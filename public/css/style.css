@@ -54,7 +54,7 @@ iframe {
 }
 
 #video-list {
-	position: fixed;
+	position: absolute;
   width: 1200px;
   height: 50px;
   margin: 427px auto;
@@ -67,6 +67,7 @@ iframe {
   background-color: #EFFFF0;
   line-height: 44px;
   margin-left: 109px;
+  overflow: scroll;
 }
 
 .category {
@@ -116,7 +117,7 @@ iframe {
   display: none; /* ensures it’s invisible until it’s called */
   overflow: scroll;
   position: absolute; /* makes the div go into a position that’s absolute to the browser viewing area */
-  left: 25%; /* positions the div half way horizontally */
+  left: 23%; /* positions the div half way horizontally */
   top: 150px;
   padding: 25px;
   padding-bottom: 50px;

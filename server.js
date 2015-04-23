@@ -7,6 +7,7 @@ var application_root = __dirname,
 		session 				 = require('express-session'),
 		models					 = require('./models'),
     DM               = require('dailymotion-sdk'),
+    request          = require('request'),
     Video            = models.videos,
     User             = models.users;
 		// videoRouter 		 = require('./routers/video_router.js'),
@@ -34,38 +35,77 @@ app.use(session({
 
 // Routes
 
-// GET Daily Motion videos
-// app.get('https://api.dailymotion.com/video',
-//   { fields: 'audience,bookmarks_total,broadcasting,channel,country,description,duration_formatted,embed_html,end_time,explicit,id,language,metadata_credit_actors,metadata_credit_director,metadata_genre,metadata_original_title,onair,owner.url,poster_url,recurrence,start_time,status,tags,thumbnail_url,title,url,views_last_day,views_last_hour,views_last_month,views_last_week,views_total', 
-//     flags: 'live', sort: 'live-audience', limit: 100
-//   },
-//   function(error, response, body) {
-//     var results = body.data;
-//     res.send(results);
-// });
-
-// GET all videos from videos table
-app.get('/videos', function(req, res) {
-	Video
-		.findAll()
-		.then(function(videos) {
-			res.send(videos);
-		});
-});
-
 // GET videos from DailyMotion
 app.get('/videos_search', function(req, res) {
-  var apiKey = 'e542a26cabdfbdec523c';
-
   request({
-    uri: 'https://api.dailymotion.com/videos?fields=audience,bookmarks_total,broadcasting,channel,country,description,duration_formatted,embed_html,end_time,explicit,id,language,metadata_credit_actors,metadata_credit_director,metadata_genre,metadata_original_title,onair,owner,poster_url,recurrence,start_time,status,tags,thumbnail_url,title,url,views_last_day,views_last_hour,views_last_month,views_last_week,views_total,&flags=live&sort=live-audience&page=1&limit=100',
+    uri: 'https://api.dailymotion.com/videos?fields=audience,bookmarks_total,broadcasting,channel,country,description,duration_formatted,embed_html,end_time,explicit,id,language,metadata_credit_actors,metadata_credit_director,metadata_genre,metadata_original_title,onair,owner,poster_url,recurrence,start_time,status,tags,thumbnail_url,title,url,views_last_day,views_last_hour,views_last_month,views_last_week,views_total,&flags=live_onair&sort=live-audience&page=1&limit=10',
     method: 'GET'
   }, function(error, response, body) {
-    res.send(body.data);
+    var data = JSON.parse(body).list;
+    
+    // massage some datas here
+    var newData = data.map(function(videoObj) {
+      return {
+        audience: videoObj.audience,
+        bookmarks_total: videoObj.bookmarks_total,
+        broadcasting: videoObj.broadcasting,
+        channel: videoObj.channel,
+        country: videoObj.country,
+        title: videoObj.title,
+        description: videoObj.description,
+        duration_formatted: videoObj.duration_formatted,
+        start_time: videoObj.start_time,
+        end_time: videoObj.end_time,
+        explicit: videoObj.explicit,
+        source_video_id: videoObj.id,
+        language: videoObj.language,
+        metadata_credit_actors: videoObj.metadata_credit_actors,
+        metadata_credit_director: videoObj.metadata_credit_director,
+        metadata_genre: videoObj.metadata_genre,
+        metadata_original_title: videoObj.metadata_original_title,
+        onair: videoObj.onair,
+        owner: videoObj.owner,
+        poster_url: videoObj.poster_url,
+        recurrence: videoObj.recurrence,
+        status: videoObj.status,
+        tags: videoObj.tags,
+        thumbnail_url: videoObj.thumbnail_url,
+        video_url: videoObj.url,
+        views_last_hour: videoObj.views_last_hour,
+        views_last_day: videoObj.views_last_day,
+        views_last_week: videoObj.views_last_week,
+        views_last_month: videoObj.views_last_month,
+        views_last_total: videoObj.views_total,
+        embed_html: videoObj.embed_html
+      }
+    });
+
+    Video
+      .bulkCreate(newData)
+      .then(function(videos) {
+        res.send(videos);
+      });
   });
 });
 
-// Create a user
+// GET all videos from videos table
+app.get('/videos', function(req, res) {
+  Video
+    .findAll()
+    .then(function(videos) {
+      res.send(videos);
+    });
+});
+
+// Delete all videos from videos table
+app.delete('/videos_delete', function(req, res) {
+  Video.destroy({ truncate: true })
+    .then(function(videos) {
+      res.sendStatus(status);
+    });
+});
+
+// Create a user account
 app.post('/users', function(req, res) {
 	var username  = req.body.username,
 			password  = req.body.password,
@@ -193,6 +233,7 @@ app.get('/current_user', function(req, res) {
     });
 });
 
+// Setting server
 app.listen(3000, function() {
 	console.log('listening on 3000');
 });
