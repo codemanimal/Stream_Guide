@@ -38,8 +38,15 @@ app.use(session({
 // GET videos from DailyMotion
 app.get('/videos_search', function(req, res) {
   request({
-    uri: 'https://api.dailymotion.com/videos?fields=audience,bookmarks_total,broadcasting,channel,country,description,duration_formatted,embed_html,end_time,explicit,id,language,metadata_credit_actors,metadata_credit_director,metadata_genre,metadata_original_title,onair,owner,poster_url,recurrence,start_time,status,tags,thumbnail_url,title,url,views_last_day,views_last_hour,views_last_month,views_last_week,views_total,&flags=live_onair&sort=live-audience&page=1&limit=10',
-    method: 'GET'
+    uri: 'https://api.dailymotion.com/videos',
+    method: 'GET',
+    qs: {
+      fields: 'audience,bookmarks_total,broadcasting,channel,country,description,duration_formatted,embed_html,end_time,explicit,id,language,metadata_credit_actors,metadata_credit_director,metadata_genre,metadata_original_title,onair,owner,poster_url,recurrence,start_time,status,tags,thumbnail_url,title,url,views_last_day,views_last_hour,views_last_month,views_last_week,views_total',
+      flags: 'live_onair',
+      sort: 'visited',
+      page: 1,
+      limit: 100
+    }
   }, function(error, response, body) {
     var data = JSON.parse(body).list;
     
@@ -91,7 +98,9 @@ app.get('/videos_search', function(req, res) {
 // GET all videos from videos table
 app.get('/videos', function(req, res) {
   Video
-    .findAll()
+    .findAll({
+      where: {onair: true}
+    })
     .then(function(videos) {
       res.send(videos);
     });
@@ -100,8 +109,8 @@ app.get('/videos', function(req, res) {
 // Delete all videos from videos table
 app.delete('/videos_delete', function(req, res) {
   Video.destroy({ truncate: true })
-    .then(function(videos) {
-      res.sendStatus(status);
+    .then(function() {
+      res.sendStatus(200);
     });
 });
 
