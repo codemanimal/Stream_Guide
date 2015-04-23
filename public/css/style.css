@@ -1,14 +1,187 @@
-/*body { background: #393D48; }
+body { background: #5D6E7A; }
  
-#title {
-	color: #d7ceb2;
-	font: 4.5em 'Sansita One';
-	text-align: center;
-	font-style: italic;
-	text-shadow: 3px 3px 0px #393D48, 6px 6px 0px #5c5f72;
+#header {
+	position: fixed;
+	top: 0;
+	background-color: #EFFFF0;
+  width: 100%;
+  height: 68px;
+  border-bottom: 10px solid #FFF7AE;
 }
-*/
-@font-face {
+
+#title {
+	color: #586669;
+	font: 4.2em 'Sansita One';
+	text-align: left;
+	font-style: italic;
+	text-shadow: 1px 1px 0px #393D48, 1px 1px 0px #586669;
+  line-height: 87px;
+  margin-left: 5px; 
+}
+
+.header-menu {
+	height: 1px;
+	cursor: pointer;
+	background-color: transparent;
+	border: 0; 
+	padding: 0;
+  font-family : inherit;
+  font-size   : 1em;
+	color: #586669;
+  text-shadow: 0px 0px 0px #393D48, 0px 0px 0px #586669;
+  font: 1.5em 'Sansita One';
+  float: right;
+  line-height: 112px;
+  margin-right: 29px;
+  padding-left: 16px;
+}
+
+iframe {
+  position: fixed;
+  width: 1000px;
+  height: 319px;
+  text-align: center;
+  margin-top: 90px;
+  margin-left: 210px;
+}
+
+#video-view-categories {
+	position: fixed;
+  width: 1200px;
+  height: 50px;
+  margin: 1px auto;
+  line-height: 65px;
+}
+
+#video-list {
+	position: fixed;
+  width: 1200px;
+  height: 50px;
+  margin: 427px auto;
+  line-height: 65px;
+  border-style: solid;
+  border-width: 5px;
+  border-color: #EFFFF0;
+  border-radius: 25px;
+  padding: 5px;
+  background-color: #EFFFF0;
+  line-height: 44px;
+  margin-left: 109px;
+}
+
+.category {
+	/*display: table-row-group;*/
+  font: 1em 'Sansita One';
+  margin-right: 29px;
+}
+
+#footer {
+	position: fixed;
+	bottom: 0;
+	background-color: #EFFFF0;
+  background-size: auto;
+  width: 100%;
+  height: 44px;
+  border-top: 10px solid #FFF7AE;
+}
+
+.footer-menu {
+	color: #586669;
+  text-shadow: 0px 0px 0px #393D48, 0px 0px 0px #586669;
+  font: 1.5em 'Sansita One';
+  float: left;
+  line-height: 47px;
+  margin-right: 29px;
+  padding-left: 16px;
+}
+
+.footer-buttons {
+	height: 1px;
+	cursor: pointer;
+	color: #586669;
+  text-shadow: 0px 0px 0px #393D48, 0px 0px 0px #586669;
+  font: 1.5em 'Sansita One';
+  float: left;
+  line-height: 47px;
+  margin-right: 29px;
+  padding-left: 16px;
+}
+
+#copyright {
+	float: right;
+}
+
+#login-modal {
+	opacity: 0.9;
+  display: none; /* ensures it’s invisible until it’s called */
+  overflow: scroll;
+  position: absolute; /* makes the div go into a position that’s absolute to the browser viewing area */
+  left: 25%; /* positions the div half way horizontally */
+  top: 150px;
+  padding: 25px;
+  padding-bottom: 50px;
+  border: 1px solid white;
+  background-color: #476EA4;
+  width: 50%;
+  z-index: 100; /* makes the div the top layer, so it’ll lay on top of the other content */
+	text-align: center;
+	color: #FFF7AE;
+}
+
+.welcome {
+	margin-bottom: 0px;
+	margin-top: 0px;
+	/*margin-left: 32px;*/
+	font-size: 2em;
+}
+
+#tagline-modal {
+	margin-top: 5px;
+}
+
+.signup-info {
+	padding-bottom: 17px;
+	left: 20px;
+	margin: auto
+}
+
+#video-categories {
+	border-style: solid;
+	border-width: 5px;
+	border-color: #EFFFF0;
+	border-radius: 25px;
+	padding: 5px; 
+	background-color: #EFFFF0;
+	line-height: 44px;
+}
+
+.category-type {
+	font-size: 1.75em;
+}
+
+#category-title {
+	padding-right: 300px;
+	padding-left: 10px;
+	text-align: left;
+}
+
+input[type="text"],
+input[type="password"],
+textarea {
+  font-size: 12px;
+  padding: 5px;
+ }
+
+ h2 {
+ 	margin-top: 5px;
+ 	margin-bottom: 20px;
+ }
+
+ p {
+ 	font-size: 1.3em;
+ }
+
+/*@font-face {
     font-family: 'BazarMedium';
     src: url('http://www.midwinter-dg.com/blog_demos/css-text-shadows/fonts/bazar-webfont.eot');
     src: url('http://www.midwinter-dg.com/blog_demos/css-text-shadows/fonts/bazar-webfont.eot?iefix') format('eot'),
@@ -21,13 +194,13 @@
 }
  
 body {
-	text-align: center;
+	/*text-align: center;*/
 	background: #383838 url(http://www.midwinter-dg.com/images/theme/body.gif) repeat;
-	width:1000px;
-	margin: 80px auto 40px;
+	/*width:1000px;*/
+	margin: 0px auto;
 }
  
-p {
+/*p {
 	width: 300px;
 	margin: 40px auto;
 	text-align: center;
@@ -48,7 +221,7 @@ a:hover, a:active {
 /* text-shadow styles */
  
  
-div {
+/*div {
 	width: 998px;	margin-right: auto;
 	margin-left: auto;
 	border: 1px solid #424242;
@@ -66,4 +239,4 @@ Z1 {
 .smaller {
 	font-size: .65em;
 	vertical-align: .2em;
-}
+}*/*/*/
