@@ -5,6 +5,13 @@
 	<title>StreamGuide</title>
 
 	<script src="http://api.dmcdn.net/all.js"></script>
+	<script>
+		DM.init({
+	    apiKey: 'e542a26cabdfbdec523c',
+	    status: true, // check login status
+	    cookie: true // enable cookies to allow the server to access the session
+		});
+	</script>
 
 	<script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 	<script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js'></script>
@@ -24,48 +31,60 @@
 
 </head>
 <body>
-	<div id='header'>
+
+	<div class ='panel' id='header'>
 		<span id='title'>STREAMGUIDE</span>
-		<span>My Videos</span>
-		<span>Account</span>
-		<span>Logout</span>
+		<span id='logout' class='header-menu'>Logout</span>
+		<span id='account' class='header-menu'>Account</span>
+		<span id='my-videos' class='header-menu'>My Videos</span>
 	</div>
 
 	<div id='login-modal'></div>
 
 	<div id='video-player'></div>
 
-	<div id='video-view-categories'>
-		<span>Title</span>
-		<span>Start Time</span>
-		<span>End Time</span>
+	<table id='video-list'>
+			<tr id='video-categories'>
+				<th class='category-type' id='category-title'>Title</th>
+				<th class='category-type' id='category-start'>Start Time</th>
+				<th class='category-type' id='category-end'>End Time</th>
+				<th class='category-type' id='category-bookmark'>Bookmark</th>
+			</tr>
+	</table>
+
+	<div id='footer' class ='panel'>
+		<span id='copyright' class='footer-menu'>©StreamGuide LLC</span>
+		<span id='about-footer' class='footer-buttons'>About</span>
+		<span id='feedback-footer' class='footer-buttons'>Feedback</span>
+		<span id='terms-footer' class='footer-buttons'>Terms of Use</span>
 	</div>
 
-	<div id='video-list'></div>
-
 	<template id='video-preview-template'>
-			<span>{{title}}</span>
-			<span>{{start_time}}</span>
-			<span>{{end_time}}</span>
-			<span>
-				<button id='save-button'>Save to list</button>
-			</span>
+			<tr>
+				<td>{{title}}</td>
+				<td>{{start_time}}</td>
+				<td>{{end_time}}</td>
+				<td>
+					<button id='save-button'>Save to list</button>
+				</td>
+			</tr>
 	</template>
 
 	<template id='login-modal-template'>
 		<div>
-			<h3>Welcome to StreamGuide!</h3>
-			<p>The best live content guide on the web</p>
+			<h3 class='welcome'>Welcome to StreamGuide!</h3>
+			<p id='tagline-modal'>The best live content guide on the web</p>
 			<div>			
 				<span>Username:</span>
 				<span>
 					<input type='text' id='login-username' placeholder='Enter username'>
 				</span>
 			</div>
+			<br>
 			<div>
 				<span>Password:</span>
 				<span>
-					<input type='text' id='login-password' placeholder='Enter password'>
+					<input type='password' id='login-password' placeholder='Enter password'>
 				</span>
 			</div>
 			<div>
@@ -82,32 +101,32 @@
 
 	<template id='sign-up-modal'>
 		<div>
-			<p>Find the best live content on the web with StreamGuide!</p>
-			<div>
+			<h2>Create an account and find the best live content on the web!</h2>
+			<div class='signup-info'>
 				<span>Name:</span>
 				<span>
 					<input type='text' id='signup-name' placeholder='First Last'>
 				</span>
 			</div>
-			<div>
+			<div class='signup-info'>
 				<span>Email:</span>
 				<span>
 					<input type='text' id='signup-email' placeholder='you@email.com'>
 				</span>
 			</div>
-			<div>
+			<div class='signup-info'>
 				<span>Birthdate:</span>
 				<span>
 					<input type='text' id='signup-birthdate' placeholder='mm/dd/yy'>
 				</span>
 			</div>
-			<div>
+			<div class='signup-info'>
 				<span>City:</span>
 				<span>
 					<input type='text' id='signup-city' placeholder='New York'>
 				</span>
 			</div>
-			<div>
+			<div class='signup-info'>
 				<span>State:</span>
 				<span>
 					<!--Change this to a dropdown menu using the 'select' and 'option' tags for all abbrev. states-->
@@ -115,13 +134,13 @@
 				</span>
 			</div>
 			<br>
-			<div>
+			<div class='signup-info'>
 				<span>Username:</span>
 				<span>
 					<input type='text' id='signup-username' placeholder='Create a username'>
 				</span>
 			</div>
-			<div>
+			<div class='signup-info'>
 				<span>Password:</span>
 				<span>
 					<input type='text' id='signup-password' placeholder='Create a password'>
@@ -133,12 +152,114 @@
 	</template>
 
 	<template id='welcome-modal'>
-		<h1>Welcome to StreamGuide!</h1>
-		<p>StreamGuide gives you a continuous guide to live content streaming from around the world.</p>
+		<h1 class='welcome'>Welcome to StreamGuide!</h1>
+		<p>StreamGuide gives you a continuously updated guide to live content streaming from around the world.</p>
 		<p>For questions, comments, inquiries, or suggestions - email us at info@streamguide.com</p>
+		<p>Happy streaming!</p>
 		<p>-The StreamGuide Team</p>
 	</template>
 
-	
+	<template id='about'>
+		<h2>About the Company</h2>
+		<p>StreamGuide was created in 2015 as a way to organize the growing number of live video streams on the web. StreamGuide relies on the DailyMotion API to find livestream content and show the best videos in a guide-like format. Individuals can use StreamGuide to find livestream content and save upcoming streams to their video list. In doing so, StreamGuide will notify the user when their saved streams are about to start. Live streams give people instantaneous access to some of the best events worldwide and StreamGuide makes them easier to find than ever. Enjoy!</p>
+		<button class='back'>Back to Feed</button>
+	</template>
+
+	<template id='feedback'>
+		<h2>Email us!</h2>
+		<p>We love to hear from you. Email us at info@streamguide.com!</p>
+		<button class='back'>Back to Feed</button>
+	</template>
+
+	<template id='terms'>
+		<h2>Terms of Use</h2>
+		<p>You must be a real person. That is all.</p>
+		<button class='back'>Back to Feed</button>
+	</template>
+
+	<template id='account-modal'>
+		<div>
+			<h2>My Account</h2>
+			<div class='signup-info'>
+				Name: {{name}}
+			</div>
+			<div class='signup-info'>
+				Email: {{email}}
+			</div>
+			<div class='signup-info'>
+				Birthdate: {{birthdate}}
+			</div>
+			<div class='signup-info'>
+				City: {{city}}
+			</div>
+			<div class='signup-info'>
+				State: {{state}}
+			</div>
+			<br>
+			<button id='update-account-button'>Update account</button>
+		</div>
+		<br>
+		<button class='back'>Back to Feed</button>
+	</template>
+
+	<template id='update-modal'>
+		<div>
+			<h2>Update account</h2>
+			<div class='signup-info'>
+				<span>Name:</span>
+				<span>
+					<input type='text' id='update-name' placeholder='First Last'>
+				</span>
+			</div>
+			<div class='signup-info'>
+				<span>Email:</span>
+				<span>
+					<input type='text' id='update-email' placeholder='you@email.com'>
+				</span>
+			</div>
+			<div class='signup-info'>
+				<span>Birthdate:</span>
+				<span>
+					<input type='text' id='update-birthdate' placeholder='mm/dd/yy'>
+				</span>
+			</div>
+			<div class='signup-info'>
+				<span>City:</span>
+				<span>
+					<input type='text' id='update-city' placeholder='New York'>
+				</span>
+			</div>
+			<div class='signup-info'>
+				<span>State:</span>
+				<span>
+					<!--Change this to a dropdown menu using the 'select' and 'option' tags for all abbrev. states-->
+					<input type='text' id='update-state' placeholder='NY'>
+				</span>
+			</div>
+			<br>
+			<div class='signup-info'>
+				<span>Username:</span>
+				<span>
+					<input type='text' id='update-username' placeholder='Create a username'>
+				</span>
+			</div>
+			<div class='signup-info'>
+				<span>Password:</span>
+				<span>
+					<input type='text' id='update-password' placeholder='Create a password'>
+				</span>
+			</div>
+			<br>
+			<button id='update-finalize-button'>Update my account!</button>
+			<br>
+			<br>
+			<button id='cancel'>Cancel</button>
+		</div>
+	</template>
+
+	<template id='update-modal'>
+		<h1 class='welcome'>Account Updated!</h1>
+	</template>
+
 </body>
 </html>
