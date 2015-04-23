@@ -24,13 +24,12 @@ App.Views.Video = Backbone.View.extend({
 		// var currentUser = 
 		// Send PUT request to add video to users session
 		$.ajax({
-			url: '',
+			url: '/video/' + userID + '/add_video',
 			method: 'PUT',
 			data: {
 				video_id: videoID
 			}
-		}).done();
-		this.removeButton();
+		}).done(this.removeButton());
 	},
 
 	removeButton: function() {

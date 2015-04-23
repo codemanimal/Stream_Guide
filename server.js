@@ -15,13 +15,6 @@ var application_root = __dirname,
 var app = express();
 // require('dotenv').load();
 
-// DailyMotion suggested syntax for instantiating module
-// DM.init({
-//     apiKey: 'e542a26cabdfbdec523c',
-//     status: true, // check login status
-//     cookie: true // enable cookies to allow the server to access the session
-// });
-
 // Server Configuration
 if (process.env.NODE_ENV !== "test") {
 	app.use( logger('dev') );
@@ -42,7 +35,7 @@ app.use(session({
 // Routes
 
 // GET Daily Motion videos
-// DM.api('/videos',
+// app.get('https://api.dailymotion.com/video',
 //   { fields: 'audience,bookmarks_total,broadcasting,channel,country,description,duration_formatted,embed_html,end_time,explicit,id,language,metadata_credit_actors,metadata_credit_director,metadata_genre,metadata_original_title,onair,owner.url,poster_url,recurrence,start_time,status,tags,thumbnail_url,title,url,views_last_day,views_last_hour,views_last_month,views_last_week,views_total', 
 //     flags: 'live', sort: 'live-audience', limit: 100
 //   },
@@ -58,6 +51,18 @@ app.get('/videos', function(req, res) {
 		.then(function(videos) {
 			res.send(videos);
 		});
+});
+
+// GET videos from DailyMotion
+app.get('/videos_search', function(req, res) {
+  var apiKey = 'e542a26cabdfbdec523c';
+
+  request({
+    uri: 'https://api.dailymotion.com/videos?fields=audience,bookmarks_total,broadcasting,channel,country,description,duration_formatted,embed_html,end_time,explicit,id,language,metadata_credit_actors,metadata_credit_director,metadata_genre,metadata_original_title,onair,owner,poster_url,recurrence,start_time,status,tags,thumbnail_url,title,url,views_last_day,views_last_hour,views_last_month,views_last_week,views_total,&flags=live&sort=live-audience&page=1&limit=100',
+    method: 'GET'
+  }, function(error, response, body) {
+    res.send(body.data);
+  });
 });
 
 // Create a user
@@ -85,6 +90,17 @@ app.post('/users', function(req, res) {
 				res.send(user);
 			});
 	});
+});
+
+// Update a user account
+app.put('/users/:id', function(req, res) {
+  User.findone(req.params.id)
+      .then(function(user) {
+        user.update(req.body)
+            .then(function(updatedUser) {
+              res.send(updatedUser);
+            });
+      });
 });
 
 // Add Video to current session user
@@ -167,6 +183,14 @@ app.post('/sessions', function(req, res) {
 app.delete('/sessions', function(req, res) {
   delete req.session.currentUser;
   res.send('Successfully logged out.');
+});
+
+app.get('/current_user', function(req, res) {
+  var userID = req.session.currentUser;
+  User.findOne(userID)
+    .then(function(user) {
+      res.send(user);
+    });
 });
 
 app.listen(3000, function() {
