@@ -8,6 +8,14 @@ var App = {
 $(function() {
 	console.log('loaded, bro');
 
+	// $.ajax({
+	// 	url: '/videos_delete',
+	//  	method: 'DELETE'	
+	// }).then(function() {
+	// 	$.get('/videos_search');
+	// });
+
+
 	App.videos = new App.Collections.Videos;
 	App.videosView = new App.Views.Videos({ collection: App.videos });
 	App.loginModal = new App.Views.LoginModal();
@@ -31,6 +39,7 @@ var logout = function() {
  				method: 'DELETE',
 			}).done(console.log('session deleted'));
 			alert('Goodbye!');
+			App.loginModal.$el.show();
 		} else {
 			console.log('button clicked with no session');
 		}

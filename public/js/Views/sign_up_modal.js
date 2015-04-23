@@ -33,18 +33,19 @@ App.Views.CreateUser = Backbone.View.extend({
 			state: state
 		}).done();
 
+		// Start session after user is created
+		// $.post('/sessions', {
+		// 	username: username,
+		// 	password: password
+		// })
+		// .done(console.log('session started'));
+
 		this.$el.empty();
 		this.$el.append($('#welcome-modal').html());
-
-		// var welcomeView = this;
-		
-		// var clearWindow = function(welcomeView) {
-		// 	setTimeout(function(welcomeView) {
-		// 	debugger;
-		// 		welcomeView.$el.empty().bind(this);
-		// 	}, 1000);
-		// };
-		// clearWindow(welcomeView);
+		this.$el.on('click', function() {
+			console.log('clicked');
+			this.remove();
+		});
 	}
 
 });
