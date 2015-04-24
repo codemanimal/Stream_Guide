@@ -114,6 +114,15 @@ app.delete('/videos_delete', function(req, res) {
     });
 });
 
+// Get users
+app.get('/users', function(req, res) {
+  User
+    .findAll()
+    .then(function(users) {
+      res.send(users);
+    });
+});
+
 // Create a user account
 app.post('/users', function(req, res) {
 	var username  = req.body.username,
@@ -200,7 +209,6 @@ app.post('/sessions', function(req, res) {
       if (user) {
         // Check their password
         var passwordDigest = user.password_digest;
-
         // Use bcrypt to compare
         bcrypt.compare(loginPassword, passwordDigest, function(err, result) {
           // If we have a match

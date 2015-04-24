@@ -11,7 +11,10 @@ App.Views.CreateUser = Backbone.View.extend({
 	},
 
 	events: {
-		'click #sign-up-button': 'signup'
+		'click #sign-up-button'			 : 'signup',
+		'click #back-to-login-button': 'goBack',
+		'click #login-button'			 	 : 'login'
+
 	},
 
 	signup: function() {
@@ -33,19 +36,38 @@ App.Views.CreateUser = Backbone.View.extend({
 			state: state
 		}).done();
 
-		// Start session after user is created
-		// $.post('/sessions', {
-		// 	username: username,
-		// 	password: password
-		// })
-		// .done(console.log('session started'));
-
 		this.$el.empty();
-		this.$el.append($('#welcome-modal').html());
-		this.$el.on('click', function() {
-			console.log('clicked');
-			this.remove();
+		this.$el.append($('#welcome-modal-template').html());
+	},
+
+	goBack: function() {
+		this.$el.empty();
+		new App.Views.LoginModal();
+	},
+
+	login: function() {
+		// Start the session
+		var username = $('#login-username').val();
+		var password = $('#login-password').val();
+		$.post('/sessions', {
+			username: username,
+			password: password
+		})
+		.done(this.fetchAndRenderSession)
+
+		// Empty the inputs
+		var username = $('#login-username').val('');
+		var password = $('#login-password').val('');
+	},
+
+	fetchAndRenderSession: function() {
+		$.get('current_user').done(function(user) {
+			if (user) {
+				$('#login-modal').hide();
+				alert('Welcome, ' + user.username + '!');
+			}
 		});
 	}
+
 
 });

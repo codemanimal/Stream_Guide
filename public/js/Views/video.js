@@ -1,5 +1,5 @@
 App.Views.Video = Backbone.View.extend({
-	el: '#video-list',
+	class: 'video-info',
 
 	initialize: function() {
 		console.log('Video view created');
@@ -11,33 +11,25 @@ App.Views.Video = Backbone.View.extend({
 
 	render: function() {
 		// Append the template to the '#video-list' table
-		this.$el.append( this.template( this.model.toJSON() ) );
+		this.$el.html( this.template( this.model.toJSON() ) );
+	},
+
+	events: {
+		'click #watch-link' 		 : 'watchVideo',
+		'click #description-link': 'showInfo'
+	},
+
+	watchVideo: function() {
+		$('#video-player').empty();
+		$('#video-player').append(this.model.attributes.embed_html);
+	},
+
+	showInfo: function() {
+		App.loginModal.$el.empty();
+		App.loginModal.$el.html($('<p>').html(this.model.attributes.description));
+		App.loginModal.$el.show();
+		$('#login-modal').on('click', function() {
+			App.loginModal.$el.hide();
+		});
 	}
-
-	// events: {
-	// 	'click #watch-link' : 'watchVideo'
-	// },
-
-	// watchVideo: function() {
-	// 	$('#watch-link').attr('href', this.model.attributes.video_url)
-	// 	debugger;
-	// 	// Get id of the video
-	// 	var videoID = this.model.get('id');
-	// 	// var currentUser = 
-	// 	// Send PUT request to add video to users session
-	// 	$.ajax({
-	// 		url: '/video/' + userID + '/add_video',
-	// 		method: 'PUT',
-	// 		data: {
-	// 			video_id: videoID
-	// 		}
-	// 	}).done(this.removeButton());
-	// },
-
-	// removeButton: function() {
-	// 	// Remove button and replace with 'Saved!'
-	// 	$('#save-button').remove();
-	// 	this.$el.append($('<span>').html('Saved!'));	
-	// }
-
 });

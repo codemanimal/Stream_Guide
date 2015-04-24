@@ -4,5 +4,4 @@ App.Models.Video = Backbone.Model.extend({
 	initialize: function() {
 		console.log('Video model created');
 	}
-
 });

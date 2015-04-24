@@ -27,10 +27,6 @@ App.Views.LoginModal = Backbone.View.extend({
 			password: password
 		})
 		.done(this.fetchAndRenderSession)
-			.fail(function(response) {
-				var err = response.responseJSON;
-				alert(err.err + ' - ' + err.msg);
-			});
 
 		// Empty the inputs
 		var username = $('#login-username').val('');

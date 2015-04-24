@@ -27,6 +27,7 @@ $(function() {
 	$('#feedback-footer').on('click', renderFeedback);
 	$('#terms-footer').on('click', renderTerms);
 	$('#account').on('click', renderAccount);
+	$('#my-videos').on('click', showVideos);
 
 });
 
@@ -39,7 +40,8 @@ var logout = function() {
  				method: 'DELETE',
 			}).done(console.log('session deleted'));
 			alert('Goodbye!');
-			App.loginModal.$el.show();
+			App.loginModal.$el.empty();
+			new App.Views.LoginModal();
 		} else {
 			console.log('button clicked with no session');
 		}
@@ -104,6 +106,14 @@ var renderAccount = function() {
 				updateView.$el.append($('#update-modal').html());
 				updateView.$el.show();
 			});
+		}
+	});
+};
+
+var showVideos = function() {
+	$.get('current_user').done(function(user) {
+		if (user) {
+			alert('This page coming soon!');
 		}
 	});
 };
