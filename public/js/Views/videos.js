@@ -1,4 +1,7 @@
 App.Views.Videos = Backbone.View.extend({
+
+	el: '#video-list',
+
 	initialize: function() {
 		console.log('Videos view created');
 		// When new view is created and video data fetched from database - render
@@ -12,7 +15,6 @@ App.Views.Videos = Backbone.View.extend({
 
 	renderOne: function(video) {
 		// Create a single video view
-		var videoView = new App.Views.Video({ model: video });
+		this.$el.append(new App.Views.Video({ model: video }).$el);
 	}
-
 });

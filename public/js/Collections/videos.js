@@ -11,5 +11,4 @@ App.Collections.Videos = Backbone.Collection.extend({
 	playVideo: function() {
 		$('#video-player').append(this.models[0].attributes.embed_html);
 	}
-
 });

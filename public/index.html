@@ -52,7 +52,7 @@
 				<th class='category-type' id='category-title'>Title</th>
 				<th class='category-type' id='category-start'>Views</th>
 				<th class='category-type' id='category-end'>Live?</th>
-				<th class='category-type' id='category-bookmark'>Bookmark</th>
+				<th class='category-type' id='category-bookmark'>Watch!</th>
 			</tr>
 	</table>
 
@@ -64,18 +64,20 @@
 	</div>
 
 	<template id='video-preview-template'>
-			<tr>
-				<td>{{title}}</td>
-				<td>{{views_last_total}}</td>
-				<td>{{onair}}</td>
-				<td>
-					<a id='watch-link' href={{video_url}}>Watch Now!</a>
-				</td>
-			</tr>
+		<tr>
+			<td scope='col' id='title-info'>{{title}}</td>
+			<td scope='col' id='views-info'>{{views_last_total}}</td>
+			<td scope='col' id='live-info'>{{onair}}</td>
+			<td scope='col' id='more-info'>
+				<button id='description-link'>More Info</button>
+			</td>
+			<td id='watch-info'>
+				<button id='watch-link'>Watch me!</button>
+			</td>							
+		</tr>
 	</template>
 
 	<template id='login-modal-template'>
-		<div>
 			<h3 class='welcome'>Welcome to StreamGuide!</h3>
 			<p id='tagline-modal'>The best live content guide on the web</p>
 			<div>			
@@ -95,12 +97,18 @@
 				<br>
 				<button id='login-button'>Login</button>
 			</div>
+			<br>
 			<hr>
-			<h3>New to StreamGuide?</h3>
+			<br>
+			<h2>New to StreamGuide?</h2>
 			<div>
 				<button id='create-user-button'>Click here to Sign Up!</button>
-			</div>			
-		</div>
+			</div>
+			<br>
+			<h1>Testimonials...</h1>
+			<p style='font-style:italic'>This is the greatest thing since cable television....John McClane</p>
+			<p style='font-style:italic'>Despite all my rage, this website is actually sort of pretty sweet....Nicholas Cage</p>
+			<p style='font-style:italic'>Trying to find where you can watch a live stream of my awesomeness? Look no further....Bruce Willis</p>
 	</template>
 
 	<template id='sign-up-modal'>
@@ -152,15 +160,38 @@
 			</div>
 			<br>
 			<button id='sign-up-button'>Create my account!</button>
+			<br>
+			<br>
+			<br>
+			<button id='back-to-login-button'>Back to login</button>
 		</div>
 	</template>
 
-	<template id='welcome-modal'>
+	<template id='welcome-modal-template'>
 		<h1 class='welcome'>Welcome to StreamGuide!</h1>
 		<p>StreamGuide gives you a continuously updated guide to live content streaming from around the world.</p>
 		<p>For questions, comments, inquiries, or suggestions - email us at info@streamguide.com</p>
 		<p>Happy streaming!</p>
 		<p>-The StreamGuide Team</p>
+		<hr>
+		<br>
+		<div>			
+			<span>Username:</span>
+			<span>
+				<input type='text' id='login-username' placeholder='Enter username'>
+			</span>
+		</div>
+		<br>
+		<div>
+			<span>Password:</span>
+			<span>
+				<input type='password' id='login-password' placeholder='Enter password'>
+			</span>
+		</div>
+		<div>
+			<br>
+			<button id='login-button'>Login</button>
+		</div>
 	</template>
 
 	<template id='about'>
