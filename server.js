@@ -6,15 +6,11 @@ var application_root = __dirname,
 		bcrypt 					 = require('bcrypt'),
 		session 				 = require('express-session'),
 		models					 = require('./models'),
-    DM               = require('dailymotion-sdk'),
     request          = require('request'),
     Video            = models.videos,
     User             = models.users;
-		// videoRouter 		 = require('./routers/video_router.js'),
-		// userRouter 			 = require('./routers/user_router.js');
 
 var app = express();
-// require('dotenv').load();
 
 // Server Configuration
 if (process.env.NODE_ENV !== "test") {
@@ -24,8 +20,6 @@ if (process.env.NODE_ENV !== "test") {
 app.use( express.static( path.join( application_root, 'public' ) ) );
 app.use( bodyParser.urlencoded({ extended: false }) );
 app.use( bodyParser.json() );
-// app.use('/videos', videoRouter);
-// app.use('/users', userRouter);
 
 app.use(session({
   secret: 'itfollows',
@@ -160,21 +154,6 @@ app.put('/users/:id', function(req, res) {
             });
       });
 });
-
-// Add Video to current session user
-// app.post('/users/:id/videos', authenticate, restrictAccess, function(req, res) {
-//   var userID = req.session.currentUser;
-//   User.
-//     .findOne(userID)
-//     .then(function(user) {
-//       user
-//         .addVideo({
-//           video_id: req.params.id
-//         }).then(function(video) {
-//           res.send(video);
-//         });
-//     });
-// });
 
 //Sessions
 
