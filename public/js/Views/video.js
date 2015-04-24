@@ -1,6 +1,4 @@
 App.Views.Video = Backbone.View.extend({
-	class: 'video-info',
-
 	initialize: function() {
 		console.log('Video view created');
 		// Compile the template for a single video view
